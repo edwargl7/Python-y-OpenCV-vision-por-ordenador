@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from PIL import Image
 
 # Cargar imagen
-imagen_perro = Image.open('/home/heiner-edwar/Imágenes/perro.jpg')
+imagen_perro = Image.open('./images/perro.jpg')
 imagen_perro.show()
 print(type(imagen_perro))
 print("Tamaño imagen: {}".format(imagen_perro.size))
