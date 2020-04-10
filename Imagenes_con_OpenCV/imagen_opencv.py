@@ -96,25 +96,50 @@ def manipulacion_imagen(ruta):
 
 def proc_image():
     print("Imagen procesamiento")
-    plt.subplot(2, 2, 1)
+    plt.subplot(3, 3, 1)
     imagen = np.zeros(shape=(500, 500, 3), dtype=np.int16)
     print(imagen.shape)
     plt.imshow(imagen)
 
     # dibujando rectangulo
-    plt.subplot(2, 2, 2)
+    plt.subplot(3, 3, 2)
     cv2.rectangle(imagen, pt1=(20, 20), pt2=(100, 150), color=(255, 0, 0), thickness=10)
     plt.imshow(imagen)
 
     # dibujando círculo
-    plt.subplot(2, 2, 3)
+    plt.subplot(3, 3, 3)
     cv2.circle(imagen, center=(250, 250), radius=100, color=(0, 255, 0), thickness=10)
     plt.imshow(imagen)
 
     # línea
-    plt.subplot(2, 2, 4)
+    plt.subplot(3, 3, 4)
     cv2.line(imagen, pt1=(50, 100), pt2=(400, 400), color=(255, 0, 255), thickness=10)
     plt.imshow(imagen)
+
+    # Texto
+    plt.subplot(3, 3, 5)
+    imagen = np.zeros(shape=(500, 500, 3), dtype=np.int16)
+    fuente = cv2.FONT_HERSHEY_SCRIPT_COMPLEX
+    cv2.putText(
+        imagen, text='Hola', org=(20, 100), fontFace=fuente, fontScale=3,
+        color=(100, 255, 100), thickness=4, lineType=cv2.LINE_8)
+    plt.imshow(imagen)
+
+    # poligono
+    plt.subplot(3, 3, 6)
+    vertices = np.array([[100, 300],
+                         [300, 200],
+                         [400, 400],
+                         [200, 400]],
+                        dtype=np.int32)
+
+    print(vertices.shape)
+
+    puntos = vertices.reshape(-1, 1, 2)
+    print(puntos.shape)
+    cv2.polylines(imagen, [puntos], isClosed=True, color=(255, 250, 250), thickness=5)
+    plt.imshow(imagen)
+
     plt.show()
 
 
