@@ -1,6 +1,6 @@
 import numpy as np
-import matplotlib.pyplot as plt
 import cv2
+import matplotlib.pyplot as plt
 
 RUTA = './images/perro.jpg'
 
@@ -92,5 +92,32 @@ def manipulacion_imagen(ruta):
     plt.show()
 
     guardar_imagen('./images/perro_reflejo.jpg')
-cargar_imagen_con_opencv(RUTA)
-manipulacion_imagen(RUTA)
+
+
+def proc_image():
+    print("Imagen procesamiento")
+    plt.subplot(2, 2, 1)
+    imagen = np.zeros(shape=(500, 500, 3), dtype=np.int16)
+    print(imagen.shape)
+    plt.imshow(imagen)
+
+    # dibujando rectangulo
+    plt.subplot(2, 2, 2)
+    cv2.rectangle(imagen, pt1=(20, 20), pt2=(100, 150), color=(255, 0, 0), thickness=10)
+    plt.imshow(imagen)
+
+    # dibujando círculo
+    plt.subplot(2, 2, 3)
+    cv2.circle(imagen, center=(250, 250), radius=100, color=(0, 255, 0), thickness=10)
+    plt.imshow(imagen)
+
+    # línea
+    plt.subplot(2, 2, 4)
+    cv2.line(imagen, pt1=(50, 100), pt2=(400, 400), color=(255, 0, 255), thickness=10)
+    plt.imshow(imagen)
+    plt.show()
+
+
+# cargar_imagen_con_opencv(RUTA)
+# manipulacion_imagen(RUTA)
+proc_image()
